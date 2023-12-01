@@ -14,11 +14,12 @@ public class Baraja {
 
     public Baraja() {
         for (int i = 0; i < naipeArray.length; i++) {
-            naipeArray[i] = new Naipe();
             for (int j = 0; j<i ; j++){
-                if (naipeArray[j]==naipeArray[i])
+                if (naipeArray[j]!=naipeArray[i])
+                    naipeArray[i] = new Naipe();
+                else {
                     i--;
-                break;
+                }
             }
         }
     }
