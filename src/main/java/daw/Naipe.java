@@ -44,4 +44,29 @@ public class Naipe {
                         throw new IllegalArgumentException("El palo no es igual a ninguno de los palos que existen");
     }
 
+    public int getCarta() {
+        return carta;
+    }
+
+    public String getPalo() {
+        return palo;
+    }
+
+    public void setCarta(int carta) {
+        this.carta = carta;
+    }
+
+    public void setPalo(String palo) {
+        this.palo = palo;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Naipe:\n");
+        sb.append(carta).append(" de ").append(palo);
+        return sb.toString();
+    }
+    
+    
 }
