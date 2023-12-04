@@ -3,44 +3,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package daw;
+
+import java.util.Random;
 import org.apache.commons.lang3.RandomStringUtils;
+
 /**
  *
  * @author ddrafa
  */
 public class Baraja {
 
-    private Naipe[] naipeArray = new Naipe[40];
+    private Naipe[] baraja = new Naipe[40];
 
     public Baraja() {
-        for (int i = 0; i < naipeArray.length; i++) {
-            for (int j = 0; j<i ; j++){
-                if (naipeArray[j]!=naipeArray[i])
-                    naipeArray[i] = new Naipe();
-                else {
-                    i--;
-                }
+        boolean correcto = true;
+        for (int i = 0; i < baraja.length; i++) {
+            baraja[i] = new Naipe();
+            System.out.println(baraja[i] + " - ");
+            if (yaContieneValor(baraja, baraja[i])) {
+                i--;
             }
         }
     }
 
-    public Naipe[] getNaipeArray() {
-        return naipeArray;
-    }
-
-    public void setNaipeArray(Naipe[] naipeArray) {
-        this.naipeArray = naipeArray;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Baraja{");
-        for(int i = 0;i<naipeArray.length;i++){
-        sb.append("naipeArray=").append(naipeArray[i].toString());
+    private static boolean yaContieneValor(Naipe[] array, Naipe carta) {
+        for (Naipe elemento : array) {
+            if (elemento == carta) {
+                return true;
+            }
         }
-        sb.append('}');
-        return sb.toString();
+        return false;
     }
-    
+
 }
