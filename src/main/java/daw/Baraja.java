@@ -19,9 +19,11 @@ public class Baraja {
         boolean correcto = true;
         for (int i = 0; i < baraja.length; i++) {
             baraja[i] = new Naipe();
-            System.out.println(baraja[i] + " - ");
-            if (yaContieneValor(baraja, baraja[i])) {
-                i--;
+            System.out.println(i + ". "+ baraja[i].toString());
+            if (i > 0) {
+                if (yaContieneValor(baraja, baraja[i])) {
+                    i--;
+                }
             }
         }
     }

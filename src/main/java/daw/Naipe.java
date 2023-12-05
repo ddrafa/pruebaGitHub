@@ -63,7 +63,6 @@ public class Naipe {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Naipe:\n");
         sb.append(carta).append(" de ").append(palo);
         return sb.toString();
     }

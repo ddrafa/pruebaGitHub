@@ -21,7 +21,6 @@ public class Main {
         System.out.println(nA.toString());
 
         Baraja b1 = new Baraja();
-        System.out.println(b1.toString());
 
         Naipe solicitante = new Naipe(1, "oro");
         do {
