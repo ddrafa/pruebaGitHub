@@ -4,6 +4,9 @@
  */
 package daw;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  *
  * @author ddrafa
@@ -11,13 +14,66 @@ package daw;
 public class PruebaBaraja {
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        boolean repetir = true;
         Naipe n1;
+        
         System.out.println("La busqueda del Rey de Oros");
+
         do {
             n1 = new Naipe();
             System.out.println(n1);
         } while (!(n1.getPalo() == PALOS.OROS && n1.getCarta() == 10));
         System.out.print("\n-------------------------------------------------\n");
+
+        System.out.println("Crear Carta Especifica");
+        
+        Naipe n2 = new Naipe(1, PALOS.OROS);
+        do {
+            try {
+                try {
+                    System.out.println("Introduce un numero de la carta:");
+                    n2.setCarta(sc.nextInt());
+                } catch (InputMismatchException ime) {
+                    repetir = true;
+                    sc.nextLine();
+                    System.out.println("Error pon un número");
+                    break;
+                }
+                sc.nextLine();
+            } catch (IllegalArgumentException iae) {
+                repetir = true;
+                sc.nextLine();
+                System.out.println("Error repeat");
+            }
+            try {
+                System.out.println("Introduce un número válido: 1 oros, 2 espadas, 3 bastos y 4 copas");
+                int opcion = sc.nextInt();
+                if (opcion == 1) {
+                    n2.setPalo(PALOS.OROS);
+                    repetir = false;
+                } else if (opcion == 2) {
+                    n2.setPalo(PALOS.ESPADAS);
+                    repetir = false;
+                } else if (opcion == 3) {
+                    n2.setPalo(PALOS.BASTOS);
+                    repetir = false;
+                } else if (opcion == 4) {
+                    n2.setPalo(PALOS.COPAS);
+                    repetir = false;
+                } else {
+                    repetir = true;
+                    System.out.println("Error no está entre 1 y 4");
+                }
+            } catch (InputMismatchException ime) {
+                repetir = true;
+                sc.nextLine();
+                System.out.println("Error pon un número");
+            }
+        } while (repetir);
+        System.out.println(n1);
+        System.out.print("\n-------------------------------------------------\n");
+
         Baraja b1 = new Baraja();
         System.out.println("Baraja con posiciones desordenadas");
         System.out.println(b1.toString());
@@ -31,8 +87,8 @@ public class PruebaBaraja {
         Naipe[] sacadas;
         sacadas = b1.sacar(numCartas);
         System.out.println("Cartas sacadas");
-        for(int i = 0; i<sacadas.length;i++){
-        System.out.println(sacadas[i]);
+        for (int i = 0; i < sacadas.length; i++) {
+            System.out.println(sacadas[i]);
         }
         System.out.print("\n-------------------------------------------------\n");
         System.out.println("Comprobación de baraja con nulls");

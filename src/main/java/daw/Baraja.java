@@ -12,15 +12,17 @@ import java.util.Random;
  */
 public class Baraja {
 
-    public static final int TAM_CARTA = 40;
-    private final Naipe[] naipeArray = new Naipe[TAM_CARTA];
+    public static final int NAIPESXBARAJA = 40;
+    private final Naipe[] naipeArray = new Naipe[NAIPESXBARAJA];
 
     public Baraja() {
-        for (int i = 0; i < naipeArray.length; i++) {
+        for (int i = 0; i < NAIPESXBARAJA; i++) {
             naipeArray[i] = new Naipe();
             for (int j = 0; j < i; j++) {
                 if (naipeArray[j] == naipeArray[i]) {
                     i--;
+                } else {
+                    break;
                 }
             }
         }
@@ -33,7 +35,7 @@ public class Baraja {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < TAM_CARTA; i++) {
+        for (int i = 0; i < NAIPESXBARAJA; i++) {
             sb.append(i + 1).append(".- ").append(naipeArray[i]).append("\n");
         }
         return sb.toString();
@@ -63,7 +65,7 @@ public class Baraja {
             Naipe[] sacados = new Naipe[numCartas];
 
             for (int i = 0; i < sacados.length; i++) {
-                int cell = rd.nextInt(0, TAM_CARTA);
+                int cell = rd.nextInt(0, NAIPESXBARAJA);
                 sacados[i] = naipeArray[cell];
                 naipeArray[cell] = null;
             }

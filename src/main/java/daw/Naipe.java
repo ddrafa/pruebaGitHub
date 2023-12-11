@@ -3,6 +3,7 @@
  */
 package daw;
 
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -67,6 +68,4 @@ public class Naipe {
         }
         return sb.toString();
     }
-    
-    
 }
