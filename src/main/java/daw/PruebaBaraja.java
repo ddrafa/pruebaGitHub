@@ -49,21 +49,27 @@ public class PruebaBaraja {
             try {
                 System.out.println("Introduce un número válido: 1 oros, 2 espadas, 3 bastos y 4 copas");
                 int opcion = sc.nextInt();
-                if (opcion == 1) {
-                    n2.setPalo(PALOS.OROS);
-                    repetir = false;
-                } else if (opcion == 2) {
-                    n2.setPalo(PALOS.ESPADAS);
-                    repetir = false;
-                } else if (opcion == 3) {
-                    n2.setPalo(PALOS.BASTOS);
-                    repetir = false;
-                } else if (opcion == 4) {
-                    n2.setPalo(PALOS.COPAS);
-                    repetir = false;
-                } else {
-                    repetir = true;
-                    System.out.println("Error no está entre 1 y 4");
+                switch (opcion) {
+                    case 1:
+                        n2.setPalo(PALOS.OROS);
+                        repetir = false;
+                        break;
+                    case 2:
+                        n2.setPalo(PALOS.ESPADAS);
+                        repetir = false;
+                        break;
+                    case 3:
+                        n2.setPalo(PALOS.BASTOS);
+                        repetir = false;
+                        break;
+                    case 4:
+                        n2.setPalo(PALOS.COPAS);
+                        repetir = false;
+                        break;
+                    default:
+                        repetir = true;
+                        System.out.println("Error no está entre 1 y 4");
+                        break;
                 }
             } catch (InputMismatchException ime) {
                 repetir = true;
@@ -78,11 +84,13 @@ public class PruebaBaraja {
         System.out.println("Baraja con posiciones desordenadas");
         System.out.println(b1.toString());
         System.out.print("\n-------------------------------------------------\n");
+        
         int move = 2;
         b1.barajar(move);
         System.out.println("Baraja con movimientos hechos");
         System.out.println(b1.toString());
         System.out.print("\n-------------------------------------------------\n");
+        
         int numCartas = 5;
         Naipe[] sacadas;
         sacadas = b1.sacar(numCartas);
@@ -91,7 +99,9 @@ public class PruebaBaraja {
             System.out.println(sacadas[i]);
         }
         System.out.print("\n-------------------------------------------------\n");
+        
         System.out.println("Comprobación de baraja con nulls");
         System.out.println(b1.toString());
+        
     }
 }
