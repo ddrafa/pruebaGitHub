@@ -5,6 +5,7 @@
 package daw;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Random;
 public class Baraja {
 
     public static final int NAIPESXBARAJA = 40;
-    ArrayList<Naipe> baraja = new ArrayList<>();
+    private ArrayList<Naipe> baraja = new ArrayList<>();
 
     // Metodo para inicializar la baraja con cartas ordenadas.
     public Baraja() {
@@ -31,7 +32,6 @@ public class Baraja {
     public ArrayList<Naipe> getBaraja() {
         return baraja;
     }
-
 
     @Override
     public String toString() {
@@ -59,6 +59,7 @@ public class Baraja {
     }
 
     public Naipe[] sacar(int numCartas) {
+        
         if (numCartas < 1 || numCartas > 40) {
             return new Naipe[0];
         } else {
@@ -70,19 +71,11 @@ public class Baraja {
                 sacados[i] = baraja.get(cell);
                 baraja.set(cell, null);
             }
-            ajustar(numCartas);
+            ArrayList<Naipe> barajaNull = new ArrayList<>();
+            barajaNull.add(null);
+                baraja.removeAll(barajaNull);
+            
             return sacados;
         }
-    }
-
-    private void ajustar(int numCartas) {
-        final int NUEVO_TAM = NAIPESXBARAJA - numCartas;
-        ArrayList<Naipe> baraja2 = new ArrayList<>(NUEVO_TAM);
-        for (int j = 0; j < NAIPESXBARAJA; j++) {
-            if (baraja.get(j) != null) {
-                baraja2.add(baraja.get(j));
-            }
-        }
-        this.baraja = baraja2;
     }
 }
