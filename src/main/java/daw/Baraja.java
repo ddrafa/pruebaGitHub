@@ -86,4 +86,3 @@ public class Baraja {
         this.baraja = baraja2;
     }
 }
-//Método que reajusta la baraja después del método sacar
