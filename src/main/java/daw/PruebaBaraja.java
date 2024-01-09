@@ -102,6 +102,5 @@ public class PruebaBaraja {
         
         System.out.println("Comprobación de baraja con nulls");
         System.out.println(b1.toString());
-        
     }
 }
